@@ -45,7 +45,7 @@
                                                             <color key="titleColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="zeroTip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="56B-9O-Tfz"/>
+                                                            <action selector="tipSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UOX-fh-1b4"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rwu-A9-VfH">
@@ -59,7 +59,7 @@
                                                             <color key="titleColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="tenTip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lo6-HS-12y"/>
+                                                            <action selector="tipSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZZF-zi-2D1"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKa-YD-tVk">
@@ -73,7 +73,7 @@
                                                             <color key="titleColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="twentyTip:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3PX-Ky-pHL"/>
+                                                            <action selector="tipSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yk2-zD-T8g"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -154,9 +154,6 @@
                                         <color key="textColor" red="0.0" green="0.69019607839999997" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                        <connections>
-                                            <action selector="onTextChange:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="Ine-Vd-TLo"/>
-                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -200,7 +197,11 @@
                         <viewLayoutGuide key="safeArea" id="Hhq-2F-eDr"/>
                     </view>
                     <connections>
-                        <outlet property="splitTextValue" destination="b3A-Bj-XTX" id="IKd-W1-PNR"/>
+                        <outlet property="numberOfPeopleLabel" destination="b3A-Bj-XTX" id="pml-FY-HFr"/>
+                        <outlet property="tenPctBtn" destination="Rwu-A9-VfH" id="V8b-0U-F7a"/>
+                        <outlet property="tipTextField" destination="hoc-4I-eJO" id="587-7f-GqK"/>
+                        <outlet property="twentyPctBtn" destination="CKa-YD-tVk" id="ffI-8F-Eih"/>
+                        <outlet property="zeroPctBtn" destination="NIj-D2-Uq5" id="HQk-ZY-Lpu"/>
                         <segue destination="Dnf-m2-FPm" kind="presentation" identifier="goToCalculate" id="qtA-oc-pbT"/>
                     </connections>
                 </viewController>
@@ -290,6 +291,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SFV-my-Ds8"/>
                     </view>
+                    <connections>
+                        <outlet property="amountForEach" destination="cw2-SX-JMK" id="59P-tO-UAX"/>
+                        <outlet property="criteriaText" destination="y5n-yI-QwU" id="ptO-wk-j9a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uLi-Eb-NGd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

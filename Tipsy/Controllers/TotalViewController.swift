@@ -9,11 +9,17 @@
 import UIKit
 
 class TotalViewController: UIViewController {
-
+    
+    var totalPerPerson: String = "0.0"
+    var numberOfPeople: String = "0"
+    var tip: String = "0"
+    @IBOutlet weak var amountForEach: UILabel!
+    @IBOutlet weak var criteriaText: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        amountForEach.text = totalPerPerson
+        criteriaText.text = "Split between \(numberOfPeople), with \(tip)% tip."
     }
     
     @IBAction func recalculatePressed(_ sender: UIButton) {

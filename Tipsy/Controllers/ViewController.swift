@@ -10,25 +10,49 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var tipTextField: UITextField!
+    @IBOutlet weak var numberOfPeopleLabel: UILabel!
+    var tip: Int = 10
+    var numberOfPeople: Int = 2
+    var billResult: String = "0"
+    @IBOutlet weak var zeroPctBtn: UIButton!
+    @IBOutlet weak var tenPctBtn: UIButton!
+    @IBOutlet weak var twentyPctBtn: UIButton!
+    
+    @IBAction func splitStepper(_ sender: UIStepper) {
+        numberOfPeople = Int(sender.value)
+        numberOfPeopleLabel.text = String(numberOfPeople)
+    }
+    
     @IBAction func calculatePressed(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToCalculate", sender: self)
     }
-    @IBAction func onTextChange(_ sender: UITextField) {
+    
+    @IBAction func tipSelected(_ sender: UIButton) {
+        zeroPctBtn.isSelected = false
+        tenPctBtn.isSelected = false
+        twentyPctBtn.isSelected = false
+        let tipPct = sender.currentTitle ?? "55"
+        tip = Int(String(tipPct.dropLast(1))) ?? 0
+        sender.isSelected = true
     }
-    @IBAction func zeroTip(_ sender: UIButton) {
-    }
-    @IBAction func tenTip(_ sender: UIButton) {
-    }
-    @IBAction func twentyTip(_ sender: UIButton) {
-    }
-    @IBAction func splitStepper(_ sender: UIStepper) {
-    }
-    @IBOutlet weak var splitTextValue: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        numberOfPeopleLabel.text = String(numberOfPeople)
         // Do any additional setup after loading the view.
     }
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToCalculate" {
+            var bill = Bill(value: Float(String(tipTextField.text!))!, tip: tip, numberOfPeople: numberOfPeople)
+            billResult = bill.Calculate()
+            let resultScreen = segue.destination as! TotalViewController
+            resultScreen.totalPerPerson = billResult
+            resultScreen.numberOfPeople = String(numberOfPeople)
+            resultScreen.tip = String(tip)
+        }
+    }
 
 }
 
